@@ -7,16 +7,11 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoDescriptionComponent } from './todo-description/todo-description.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    TodoListComponent,
-    TodoDescriptionComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  declarations: [AppComponent, TodoListComponent, TodoDescriptionComponent],
+  imports: [BrowserModule,
+    AppRoutingModule],
+
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

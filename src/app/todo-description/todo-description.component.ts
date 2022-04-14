@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-todo-description',
+  selector: 'td-todo-description',
   templateUrl: './todo-description.component.html',
   styleUrls: ['./todo-description.component.css']
 })
