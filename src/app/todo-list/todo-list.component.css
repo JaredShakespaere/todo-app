@@ -38,6 +38,10 @@
 .btn-link {
   height: 40%;
 }
-
+.card {
+  width: 175px;
+  height: 175px;
+  margin: 3rem;
+}
 
 

@@ -20,7 +20,15 @@
           </ul>
         </div>
       </div>
-      <div class="row" id="todo">todo list</div>
+      <div class="row" id="todo" *ngIf="todos.length">
+        <div class="card ">
+          <div class="card-body">
+            <p class="card-date">Card date goes here</p>
+            <h5 class="card-title">Card title</h5>
+            <button class="btn-danger">Delete</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
