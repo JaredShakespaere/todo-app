@@ -8,8 +8,9 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./todo.component.css'],
 })
 export class TodoComponent implements OnInit {
-  @Input()
-  todoDescription!: string;
+  cardHeightAndWidth: number = 13;
+  cardMargin: number = 3;
+
   todos: any[] = [
     {
       todoId: 1,

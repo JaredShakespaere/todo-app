@@ -1,12 +1,14 @@
 .card {
-  width: 175px;
-  height: 175px;
-  margin: 3rem;
+  background-color: #172c45;
+  color: beige;
+  box-shadow: 10px 10px 10px #a0869a;
+  border-radius: 5px;
 }
 .card-description{
   height: 50px;
   overflow-x: hidden;
   overflow-y: scroll;
+  border-radius: 5px;
 
 }
 

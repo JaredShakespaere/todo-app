@@ -28,7 +28,11 @@
 }
 
 #todo{
-  background-color: gray;
+  background-color: beige;
+  box-shadow: 10px 10px 10px #a0869c;
+  border: thin #a0869c;
+  border-radius: 10px;
+
 }
 
 #li {
@@ -44,4 +48,8 @@
   margin: 3rem;
 }
 
+#addTodoBtn{
+  background-color: #960983;
+  color: #e3e6eb;
+}
 
