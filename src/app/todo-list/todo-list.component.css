@@ -1,0 +1,43 @@
+
+
+  #container {
+    height: 100vh;
+    /* border: solid; */
+  }
+
+/* .row {
+  border: solid;
+  border-color: green;
+
+}
+
+.col {
+  border: solid;
+} */
+
+#page{
+  height: 75vh;
+}
+
+#nav {
+  height: 10%;
+}
+
+#todo {
+  height: 90%;
+}
+
+#todo{
+  background-color: gray;
+}
+
+#li {
+  height: 40%;
+  margin: 15px;
+}
+.btn-link {
+  height: 40%;
+}
+
+
+

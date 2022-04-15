@@ -1,12 +1,26 @@
-<p>todo-list works!</p>
-
 <div class="container">
-  <p>hello container</p>
-  <div class="row">
-    <p>hello row</p>
-    <div class="col bg-success">
-      <p>hello column</p>
+  <div class="row" id="page">
+    <div class="col d-flex flex-column">
+      <div class="row" id="nav">
+        <div class="col d-flex justify-content-center">
+          <ul class = "nav" id="navBar">
+            <div>
+              <form>
+                <input type="text" placeholder="Add title">
+                <input type="text" placeholder="Add description">
+                <input type="text" placeholder="Add due date">
+                <button class = "btn btn-primary"
+                type="submit"> Add Todo
+              </button>
+              </form>
+            </div>
+            <li class = "nav-item d-flex" id="li">
+              <input type="text" placeholder="Search..">
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row" id="todo">todo list</div>
     </div>
-
   </div>
 </div>
