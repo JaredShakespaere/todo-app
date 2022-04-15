@@ -1,0 +1,12 @@
+.card {
+  width: 175px;
+  height: 175px;
+  margin: 3rem;
+}
+.card-description{
+  height: 50px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+}
+
