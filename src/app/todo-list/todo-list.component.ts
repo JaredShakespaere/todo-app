@@ -48,19 +48,20 @@ export class TodoListComponent {
     if (this.sortByTitle) {
       this.todos.sort((a, b) => a.todoTitle.localeCompare(b.todoTitle));
       return this.todos;
-    } else {
+    } else if(!this.sortByTitle){
+      this.todos.sort((a,b) => b.todoTitle.localeCompare(a.todoTitle));
       return this.originalArr.todoTitle;
     }
   }
-  
+
   sortDate(): any {
     this.sortByDate = !this.sortByDate;
       if(this.sortByDate) {
         this.todos.sort((a,b) => a.todoDueDate - b.todoDueDate)
         return this.todos;
       } else {
+        this.todos.sort((a, b) => b.todoDueDate - a.todoDueDate);
         return this.originalArr.todoDueDate;
       }
-
   }
 }
