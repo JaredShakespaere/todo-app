@@ -9,17 +9,18 @@ import { Component, OnInit } from '@angular/core';
     '../sort/sort.component.css',
   ],
 })
-export class TodoListComponent implements OnInit {
+export class TodoListComponent {
   cardHeightAndWidth: number = 13;
   cardMargin: number = 3;
 
   sortByTitle: boolean = false;
   sortByDate: boolean = false;
+
   todos: any[] = [
     {
       todoId: 1,
       todoTitle: 'interview prep',
-      todoDueDate: 'April 16, 2022',
+      todoDueDate: new Date(2022, 3, 19),
       todoDescription:
         'Hampr. Compile necessary documents. Go over the job description.',
       todoTags: ['interview', 'work'],
@@ -27,22 +28,39 @@ export class TodoListComponent implements OnInit {
     {
       todoId: 2,
       todoTitle: 'laundry',
-      todoDueDate: 'April 18, 2022',
+      todoDueDate: new Date(2022, 3, 17),
       todoDescription: 'one load of colors and one of whites',
       todoTags: ['cleaning'],
     },
     {
       todoId: 3,
       todoTitle: 'easter stuff',
-      todoDueDate: 'April 17, 2022',
+      todoDueDate: new Date(2022, 3, 21),
       todoDescription: 'dye eggs, hide eggs in the yard, get ci more candy',
       todoTags: ['family'],
     },
   ];
+  originalArr: any = this.todos.map;
 
-  sortTitle(): void {
+  sortTitle(): any {
     this.sortByTitle = !this.sortByTitle;
-  }
 
-  ngOnInit(): void {}
+    if (this.sortByTitle) {
+      this.todos.sort((a, b) => a.todoTitle.localeCompare(b.todoTitle));
+      return this.todos;
+    } else {
+      return this.originalArr.todoTitle;
+    }
+  }
+  
+  sortDate(): any {
+    this.sortByDate = !this.sortByDate;
+      if(this.sortByDate) {
+        this.todos.sort((a,b) => a.todoDueDate - b.todoDueDate)
+        return this.todos;
+      } else {
+        return this.originalArr.todoDueDate;
+      }
+
+  }
 }

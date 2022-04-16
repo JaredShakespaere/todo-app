@@ -8,7 +8,7 @@
               <form>
                 <input type="text" placeholder="Add title" />
                 <input type="text" placeholder="Add description" />
-                <input type="text" placeholder="Add due date" />
+                <input type="date" placeholder="Add due date" />
                 <button class="btn" id="navBtn" type="submit">
                   Add Todo
                 </button>
@@ -18,12 +18,13 @@
               <input type="text" placeholder="Filter.." />
             </li>
             <li>
-              <button class="btn fa-sort-alpha-asc" id="navBtn">
+              <button class="btn fa-sort-alpha-asc" id="navBtn"
+              (click)="sortTitle()">
                  By Title
               </button>
             </li>
             <li>
-              <button class="btn fa-sort" id="navBtn">Sort By Date</button>
+              <button class="btn fa-sort" id="navBtn" (click)="sortDate()">Sort By Date</button>
             </li>
           </ul>
         </div>
@@ -38,7 +39,7 @@
           [style.margin.rem]="cardMargin"
         >
           <div class="card-body d-flex justify-content-center flex-column">
-            <p class="card-date">Due: {{ todo.todoDueDate }}</p>
+            <p class="card-date">Due: {{ todo.todoDueDate.toDateString() }}</p>
             <h5 class="card-title">{{ todo.todoTitle }}</h5>
             <p class="card-description">{{ todo.todoDescription }}</p>
             <button class="btn btn-danger" id="delete-btn">

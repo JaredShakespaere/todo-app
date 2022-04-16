@@ -1,9 +1,7 @@
-
-
-  #container {
-    height: 100vh;
-    /* border: solid; */
-  }
+#container {
+  height: 100vh;
+  /* border: solid; */
+}
 
 /* .row {
   border: solid;
@@ -15,7 +13,7 @@
   border: solid;
 } */
 
-#page{
+#page {
   height: 75vh;
 }
 
@@ -27,12 +25,11 @@
   height: 90%;
 }
 
-#todo{
+#todo {
   background-color: beige;
   box-shadow: 10px 10px 10px #a0869c;
   border: thin #a0869c;
   border-radius: 10px;
-
 }
 
 #li {
@@ -47,7 +44,3 @@
   height: 175px;
   margin: 3rem;
 }
-
-
-
-
