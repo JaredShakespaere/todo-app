@@ -6,9 +6,10 @@ import { AppComponent } from './app.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoDescriptionComponent } from './todo-description/todo-description.component';
 import { TodoComponent } from './todo/todo.component';
+import { SortComponent } from './sort/sort.component';
 
 @NgModule({
-  declarations: [AppComponent, TodoListComponent, TodoDescriptionComponent, TodoComponent],
+  declarations: [AppComponent, TodoListComponent, TodoDescriptionComponent, TodoComponent, SortComponent],
   imports: [BrowserModule,
     AppRoutingModule],
 

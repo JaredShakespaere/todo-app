@@ -11,7 +11,11 @@ export class TodoComponent implements OnInit {
   cardHeightAndWidth: number = 13;
   cardMargin: number = 3;
 
-  todos: any[] = [
+  sortByTitle: boolean = false;
+  sortByDate: boolean = false;
+
+  @Input() todos: any[] = [
+
     {
       todoId: 1,
       todoTitle: 'interview prep',
@@ -38,4 +42,9 @@ export class TodoComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+//   sortByTile(): {
+//     if(true){
+//       console.log('sort by title was clicked');
+//   }
+// }
 }

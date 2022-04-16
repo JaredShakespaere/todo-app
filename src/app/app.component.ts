@@ -4,7 +4,6 @@ import { Component } from '@angular/core';
   selector: 'td-root',
   template: `
   <div>
-    <h1>{{title}}</h1>
       <td-todo-list></td-todo-list>
   </div>
   `
