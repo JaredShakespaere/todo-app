@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { filter } from 'rxjs';
+import { ITodo } from '../todo/todo';
 
 @Component({
   selector: 'td-todo-list',
@@ -9,14 +11,36 @@ import { Component, OnInit } from '@angular/core';
     '../sort/sort.component.css',
   ],
 })
-export class TodoListComponent {
+export class TodoListComponent implements OnInit {
   cardHeightAndWidth: number = 13;
   cardMargin: number = 3;
 
   sortByTitle: boolean = false;
   sortByDate: boolean = false;
 
-  todos: any[] = [
+  filteredTodos: ITodo[] = [];
+
+  private _listFilter: string = '';
+  get listFilter(): string {
+    return this._listFilter;
+  }
+  set listFilter(value: string){
+    this._listFilter = value;
+    console.log('In setter:', value)
+    this.filteredTodos = this.searchFilter(value);
+  }
+
+  private _addTitle: string = 'Get gas';
+  get addTitle(): string {
+    return this._addTitle;
+  }
+  set addTitle(value: string){
+    this._addTitle = value;
+    console.log('In setter:', value)
+    
+  }
+
+  todos: ITodo[] = [
     {
       todoId: 1,
       todoTitle: 'interview prep',
@@ -46,10 +70,10 @@ export class TodoListComponent {
     this.sortByTitle = !this.sortByTitle;
 
     if (this.sortByTitle) {
-      this.todos.sort((a, b) => a.todoTitle.localeCompare(b.todoTitle));
+      this.filteredTodos.sort((a, b) => a.todoTitle.localeCompare(b.todoTitle));
       return this.todos;
     } else if(!this.sortByTitle){
-      this.todos.sort((a,b) => b.todoTitle.localeCompare(a.todoTitle));
+      this.filteredTodos.sort((a,b) => b.todoTitle.localeCompare(a.todoTitle));
       return this.originalArr.todoTitle;
     }
   }
@@ -57,11 +81,22 @@ export class TodoListComponent {
   sortDate(): any {
     this.sortByDate = !this.sortByDate;
       if(this.sortByDate) {
-        this.todos.sort((a,b) => a.todoDueDate - b.todoDueDate)
+        this.filteredTodos.sort((a: any, b: any) => a.todoDueDate - b.todoDueDate)
         return this.todos;
       } else {
-        this.todos.sort((a, b) => b.todoDueDate - a.todoDueDate);
+        this.filteredTodos.sort((a: any, b: any) => b.todoDueDate - a.todoDueDate);
         return this.originalArr.todoDueDate;
       }
   }
+
+  searchFilter(filterBy: string): ITodo[] {
+    filterBy = filterBy.toLocaleLowerCase();
+    return this.todos.filter((todo: ITodo) => todo.todoTitle.toLocaleLowerCase().includes(filterBy));
+  }
+
+
+  ngOnInit(): void {
+    this.listFilter = ''
+  }
+
 }
