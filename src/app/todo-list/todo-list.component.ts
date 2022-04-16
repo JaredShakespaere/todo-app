@@ -26,18 +26,8 @@ export class TodoListComponent implements OnInit {
   }
   set listFilter(value: string){
     this._listFilter = value;
-    console.log('In setter:', value)
+    console.log('In filter setter:', value)
     this.filteredTodos = this.searchFilter(value);
-  }
-
-  private _addTitle: string = 'Get gas';
-  get addTitle(): string {
-    return this._addTitle;
-  }
-  set addTitle(value: string){
-    this._addTitle = value;
-    console.log('In setter:', value)
-    
   }
 
   todos: ITodo[] = [
@@ -95,8 +85,11 @@ export class TodoListComponent implements OnInit {
   }
 
 
+
+
   ngOnInit(): void {
     this.listFilter = ''
+
   }
 
 }

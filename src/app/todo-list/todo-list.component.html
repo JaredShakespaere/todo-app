@@ -5,11 +5,11 @@
         <div class="col d-flex justify-content-center">
           <ul class="nav" id="navBar">
             <div>
-              <form>
-                <input type="text" placeholder="Add title" [(ngModel)]='addTitle'/>
-                <input type="text" placeholder="Add description" />
-                <input type="date" placeholder="Add due date" />
-                <button class="btn" id="navBtn" type="submit">
+              <form  #form="ngForm">
+                <input type="text" placeholder="Add title" name="title" ngModel/>
+                <input type="text" placeholder="Add description" name="description" ngModel/>
+                <input type="date" placeholder="Add due date" name="date" ngModel/>
+                <button class="btn" id="navBtn" type="submit" >
                   Add Todo
                 </button>
               </form>
@@ -51,3 +51,5 @@
     </div>
   </div>
 </div>
+
+{{form.value.title | json}}
