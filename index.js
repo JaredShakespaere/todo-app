@@ -36,6 +36,21 @@ app.post("/todos", async (req, res) => {
 });
 
 // update
+app.put("/:id", async (req, res) => {
+  try {
+    const { id } = req.params; // where
+    const { description, title } = req.body; // set
+
+    const updateTodo = await pool.query(
+      "UPDATE todo SET description = $1 WHERE todo_id = $2",
+      [description, id]
+    );
+
+    res.json('updated todo');
+  } catch (err) {
+    console.error(err.message);
+  }
+});
 
 //delete
 
