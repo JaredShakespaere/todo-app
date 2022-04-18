@@ -9,15 +9,15 @@ app.use(express.json());
 
 //get all todos
 
-app.get('/', async(req, res) => {
-  try{
-    const todoList = 
-    console.log(req.body)
+app.get("/", async (req, res) => {
+  try {
+    const todoList = await pool.query("SELECT * FROM todo");
+
+    res.json(todoList);
+  } catch (err) {
+    console.error(err.message);
   }
-  catch(err){
-    console.error(err.message)
-  }
-})
+});
 
 //create a todos
 
@@ -29,7 +29,7 @@ app.post("/todos", async (req, res) => {
       [title, description, date]
     );
 
-    res.json(newTodo);
+    res.json(newTodo.rows);
   } catch (err) {
     console.error(err.message);
   }
