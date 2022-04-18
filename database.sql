@@ -5,7 +5,4 @@ CREATE TABLE todo(
   description VARCHAR(255)
 );
 
-ALTER TABLE todo(
-  ADD title VARCHAR(250),
-  dueDate DATE;
-);
+
