@@ -46,13 +46,24 @@ app.put("/:id", async (req, res) => {
       [description, id]
     );
 
-    res.json('updated todo');
+    res.json("updated todo");
   } catch (err) {
     console.error(err.message);
   }
 });
 
 //delete
+app.delete("/todos/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deleteTodo = await pool.query("DELETE FROM todo WHERE todo_id = $1", [
+      id
+    ]);
+    res.json("todo was deleted");
+  } catch (error) {
+    console.error(error.message);
+  }
+});
 
 const PORT = 3000;
 app.listen(3000 || PORT, () => {
