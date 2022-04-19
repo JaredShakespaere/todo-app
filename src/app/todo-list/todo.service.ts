@@ -1,34 +1,44 @@
-import { Injectable } from "@angular/core";
-import { ITodo } from "./todo";
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable, throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+import { ITodo } from './todo';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
+
 export class TodoService {
 
-  getTodos(): ITodo[] {
-     return [
-      {
-        todoId: 1,
-        todoTitle: 'interview prep',
-        todoDueDate: new Date(2022, 3, 19),
-        todoDescription: 'Hampr. Compile necessary documents. Go over the job description.',
-        todoTags: ['interview', 'work'],
-      },
-      {
-        todoId: 2,
-        todoTitle: 'laundry',
-        todoDueDate: new Date(2022, 3, 17),
-        todoDescription: 'one load of colors and one of whites',
-        todoTags: ['cleaning'],
-      },
-      {
-        todoId: 3,
-        todoTitle: 'easter stuff',
-        todoDueDate: new Date(2022, 3, 21),
-        todoDescription: 'dye eggs, hide eggs in the yard, get ci more candy',
-        todoTags: ['family'],
-      },
-    ];
+
+  private rootUrl: string = 'http://localhost:3000/';
+
+  constructor(private http: HttpClient) { }
+
+  getTodos(): Observable<ITodo[]> {
+    return this.http
+      .get<ITodo[]>(this.rootUrl)
+      .pipe(tap(data => {
+        console.log('All data', JSON.stringify(data));
+        for(let i = 0; i < data.length; i++){
+          console.log(data)
+        }
+      }),
+      catchError(this.handleError)
+      );
   }
+  private handleError(err: HttpErrorResponse){
+    let errorMessage = '';
+    if( err.error instanceof ErrorEvent) {
+      errorMessage = `Error: ${err.error.message}`;
+
+    } else{
+      errorMessage = `error code: ${err.status}, error message: ${err.message}`;
+    }
+    console.error(errorMessage);
+    return throwError(errorMessage);
+
+
+  }
+
 }

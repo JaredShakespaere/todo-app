@@ -15,13 +15,12 @@ import { TodoService } from './todo.service';
 export class TodoListComponent implements OnInit {
   cardHeightAndWidth: number = 13;
   cardMargin: number = 3;
-
   sortByTitle: boolean = false;
   sortByDate: boolean = false;
-
   filteredTodos: ITodo[] = [];
-  todos: ITodo[] = []
+  todos: ITodo[] = [];
   originalArr: any = this.todos.map;
+  errorMessage: string = '';
 
   private _listFilter: string = '';
   get listFilter(): string {
@@ -69,8 +68,13 @@ export class TodoListComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.todos = this.todoService.getTodos();
-    this.filteredTodos = this.todos;
+    this.todoService.getTodos().subscribe({
+      next: todos => {
+        this.todos = todos;
+        this.filteredTodos = this.todos;
+      },
+      error: err => this.errorMessage = err
+    });
 
   }
 
