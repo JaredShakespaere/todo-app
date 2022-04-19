@@ -8,11 +8,12 @@ const pool = require("./db");
 app.use(cors());
 app.use(express.json());
 
+
 //routes
 
 //get all todos
 
-app.get("/", async (req, res) => {
+app.get("/todos", async (req, res) => {
   try {
     const todoList = await pool.query("SELECT * FROM todo");
 
@@ -22,9 +23,9 @@ app.get("/", async (req, res) => {
   }
 });
 
-//create a todos
+//create a todo
 
-app.post("/todos", async (req, res) => {
+app.post("/todo", async (req, res) => {
   try {
     const { title, description, date } = req.body;
     const newTodo = await pool.query(

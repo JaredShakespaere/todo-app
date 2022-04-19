@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { filter } from 'rxjs';
+import { Observable, pluck } from 'rxjs';
 import { ITodo } from './todo';
 import { TodoService } from './todo.service';
 
@@ -66,12 +66,13 @@ export class TodoListComponent implements OnInit {
 
 
 
-
   ngOnInit(): void {
     this.todoService.getTodos().subscribe({
       next: todos => {
+
         this.todos = todos;
-        this.filteredTodos = this.todos;
+
+        this.filteredTodos = todos;
       },
       error: err => this.errorMessage = err
     });

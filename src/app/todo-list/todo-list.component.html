@@ -30,9 +30,10 @@
         </div>
       </div>
       <div class="row" id="todo">
+        <!-- ERROR COMING FROM THE LOOP BELOW -->
         <div
           class="card"
-          *ngFor="let todo of filteredTodos"
+          *ngFor="let todo of filteredTodos "
           [title]="todo.todoTitle"
           [style.width.rem]="cardHeightAndWidth"
           [style.height.rem]="cardHeightAndWidth"
@@ -47,9 +48,11 @@
             </button>
           </div>
         </div>
+
+
       </div>
     </div>
   </div>
 </div>
 
-{{form.value.title | json}}
+

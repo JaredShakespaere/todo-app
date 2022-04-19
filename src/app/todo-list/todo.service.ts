@@ -7,38 +7,28 @@ import { ITodo } from './todo';
 @Injectable({
   providedIn: 'root',
 })
-
 export class TodoService {
+  private rootUrl: string = 'http://localhost:3000/todos';
 
 
-  private rootUrl: string = 'http://localhost:3000/';
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getTodos(): Observable<ITodo[]> {
-    return this.http
-      .get<ITodo[]>(this.rootUrl)
-      .pipe(tap(data => {
+    return this.http.get<ITodo[]>(this.rootUrl).pipe(
+      tap((data) => {
         console.log('All data', JSON.stringify(data));
-        for(let i = 0; i < data.length; i++){
-          console.log(data)
-        }
       }),
       catchError(this.handleError)
-      );
+    );
   }
-  private handleError(err: HttpErrorResponse){
+  private handleError(err: HttpErrorResponse) {
     let errorMessage = '';
-    if( err.error instanceof ErrorEvent) {
+    if (err.error instanceof ErrorEvent) {
       errorMessage = `Error: ${err.error.message}`;
-
-    } else{
+    } else {
       errorMessage = `error code: ${err.status}, error message: ${err.message}`;
     }
     console.error(errorMessage);
     return throwError(errorMessage);
-
-
   }
-
 }
