@@ -44,3 +44,8 @@
   height: 175px;
   margin: 3rem;
 }
+
+#delete-btn {
+  position: absolute;
+  margin-top: 10rem ;
+}

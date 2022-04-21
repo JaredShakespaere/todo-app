@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, pluck } from 'rxjs';
 import { ITodo } from './todo';
 import { TodoService } from './todo.service';
 
