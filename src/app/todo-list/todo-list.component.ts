@@ -20,7 +20,7 @@ export class TodoListComponent implements OnInit {
   filteredTodos: ITodo[] = [];
   todos: ITodo[] = [];
   originalArr: any = this.todos.map;
-  errorMessage: string = '';
+  errorMessage: string = 'An error occured in subscribe';
 
   private _listFilter: string = '';
   get listFilter(): string {
@@ -67,15 +67,14 @@ export class TodoListComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.todoService.getTodos().subscribe({
-      next: todos => {
-
-        this.todos = todos;
-
-        this.filteredTodos = todos;
-      },
-      error: err => this.errorMessage = err
-    });
+   this.todoService.getTodos().subscribe({
+     next: todos => {
+       this.todos = todos;
+       this.filteredTodos = this.todos
+       console.log(this.filteredTodos)
+     },
+     error: err => this.errorMessage = err
+   });
 
   }
 

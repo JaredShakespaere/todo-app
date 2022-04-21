@@ -40,7 +40,7 @@
           [style.margin.rem]="cardMargin"
         >
           <div class="card-body d-flex justify-content-center flex-column">
-            <p class="card-date">Due: {{ todo.todoDueDate | date }}</p>
+            <p class="card-date">Due: {{ todo.todoDueDate}}</p>
             <h5 class="card-title">{{ todo.todoTitle }}</h5>
             <p class="card-description">{{ todo.todoDescription }}</p>
             <button class="btn btn-danger" id="delete-btn">
