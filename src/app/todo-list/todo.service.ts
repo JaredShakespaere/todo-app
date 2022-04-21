@@ -8,13 +8,14 @@ import { ITodo } from './todo';
   providedIn: 'root',
 })
 export class TodoService {
-  private rootUrl: string = 'http://localhost:3000/todos';
+  private baseUrl: string = 'http://localhost:3000';
+  private deleteUrl: string = 'http://localhost:3000/todos:id';
 
 
   constructor(private http: HttpClient) {}
 
   getTodos(): Observable<ITodo[]> {
-    return this.http.get<ITodo[]>(this.rootUrl).pipe(
+    return this.http.get<ITodo[]>(this.baseUrl + '/todos').pipe(
       tap((data) => {
         console.log('All data', JSON.stringify(data));
       }),
@@ -22,6 +23,10 @@ export class TodoService {
     );
   }
 
+  // deleteTodo(): Observable<ITodo[]>{
+  //   return this.http.delete<ITodo[]>(this.baseUrl + '/todos/:id')
+  //   .map((res: Response) => res.json().status).catch(this.handleError);
+  // }
 
   private handleError(err: HttpErrorResponse) {
     let errorMessage = '';

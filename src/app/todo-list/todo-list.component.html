@@ -1,30 +1,59 @@
 <div class="container">
+  <div class="form-container">
+    <form #form="ngForm" class="d-flex flex-column" (ngSubmit)="onSubmit(form)">
+      <input
+        type="text"
+        placeholder="Add title"
+        name="title"
+       [(ngModel)]="formSettings.todoTitle"
+       required
+      />
+      <div class="form-group d-flex flex-column">
+        <textarea
+          id="description"
+          name="description"
+          placeholder="description"
+          class="form-control"
+          rows="1"
+       [(ngModel)]="formSettings.todoDescription"
+       required
+        ></textarea>
+      </div>
+      <input
+        type="date"
+        placeholder="Add due date"
+        name="date"
+       [(ngModel)]="formSettings.todoDueDate"
+       required
+      />
+      <button class="btn" id="navBtn" type="submit">Add Todo</button>
+    </form>
+  </div>
   <div class="row" id="page">
     <div class="col d-flex flex-column">
       <div class="row" id="nav">
         <div class="col d-flex justify-content-center">
           <ul class="nav" id="navBar">
-            <div>
-              <form  #form="ngForm">
-                <input type="text" placeholder="Add title" name="title" ngModel/>
-                <input type="text" placeholder="Add description" name="description" ngModel/>
-                <input type="date" placeholder="Add due date" name="date" ngModel/>
-                <button class="btn" id="navBtn" type="submit" >
-                  Add Todo
-                </button>
-              </form>
-            </div>
             <li class="nav-item d-flex" id="li">
-              <input type="text" placeholder="Filter.." [(ngModel)]="listFilter" />
+              <input
+                type="text"
+                placeholder="Filter.."
+                [(ngModel)]="listFilter"
+              />
             </li>
             <li>
-              <button class="btn fa-sort-alpha-asc" id="navBtn"
-              (click)="sortTitle()">
-                 Sort By Title
+              <button
+                class="btn fa-sort-alpha-asc"
+                id="navBtn"
+                (click)="sortTitle()"
+              >
+                Sort By Title
               </button>
             </li>
             <li>
-              <button class="btn fa-sort" id="navBtn" (click)="sortDate()"> Sort By Date</button>
+              <button class="btn fa-sort" id="navBtn" (click)="sortDate()">
+                Sort By Date
+              </button>
             </li>
           </ul>
         </div>
@@ -33,7 +62,7 @@
         <!-- ERROR COMING FROM THE LOOP BELOW -->
         <div
           class="card"
-          *ngFor="let todo of filteredTodos "
+          *ngFor="let todo of filteredTodos"
           [title]="todo.todoTitle"
           [style.width.rem]="cardHeightAndWidth"
           [style.height.rem]="cardHeightAndWidth"
@@ -48,11 +77,10 @@
             </button>
           </div>
         </div>
-
-
       </div>
     </div>
   </div>
 </div>
 
 
+{{originalFormSetttings | json}}

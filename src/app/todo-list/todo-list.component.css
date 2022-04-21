@@ -2,6 +2,10 @@
   height: 100vh;
   /* border: solid; */
 }
+.form-container{
+  width: 33%;
+  justify-self: center;
+}
 
 /* .row {
   border: solid;
