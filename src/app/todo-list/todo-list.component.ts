@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ITodo } from './todo';
 import { TodoService } from './todo.service';
 
@@ -11,7 +12,7 @@ import { TodoService } from './todo.service';
     '../sort/sort.component.css',
   ],
 })
-export class TodoListComponent implements OnInit {
+export class TodoListComponent implements OnInit, OnDestroy {
   cardHeightAndWidth: number = 13;
   cardMargin: number = 3;
   sortByTitle: boolean = false;
@@ -20,6 +21,7 @@ export class TodoListComponent implements OnInit {
   todos: ITodo[] = [];
   originalArr: any = this.todos.map;
   errorMessage: string = 'An error occured in subscribe';
+  sub!: Subscription;
 
   private _listFilter: string = '';
   get listFilter(): string {
@@ -75,6 +77,10 @@ export class TodoListComponent implements OnInit {
      error: err => this.errorMessage = err
    });
 
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 
 }
