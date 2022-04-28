@@ -5,7 +5,7 @@
         type="text"
         placeholder="Add title"
         name="title"
-       [(ngModel)]="formSettings.todoTitle"
+       [(ngModel)]="ITodo.todoTitle"
        required
       />
       <div class="form-group d-flex flex-column">
@@ -15,7 +15,7 @@
           placeholder="description"
           class="form-control"
           rows="1"
-       [(ngModel)]="formSettings.todoDescription"
+       [(ngModel)]="ITodo.todoDescription"
        required
         ></textarea>
       </div>
@@ -23,7 +23,7 @@
         type="date"
         placeholder="Add due date"
         name="date"
-       [(ngModel)]="formSettings.todoDueDate"
+       [(ngModel)]="ITodo.todoDueDate"
        required
       />
       <button class="btn" id="navBtn" type="submit">Add Todo</button>
@@ -83,4 +83,3 @@
 </div>
 
 
-{{originalFormSetttings | json}}

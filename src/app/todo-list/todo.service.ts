@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { ITodo } from './todo';
 
@@ -21,6 +21,10 @@ export class TodoService {
       }),
       catchError(this.handleError)
     );
+  }
+
+  postTodoForm(ITodo: ITodo) : Observable<ITodo> {
+    return of(ITodo);
   }
 
   // deleteTodo(): Observable<ITodo[]>{

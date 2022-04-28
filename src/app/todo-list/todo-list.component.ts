@@ -24,15 +24,15 @@ export class TodoListComponent implements OnInit, OnDestroy {
   errorMessage: string = 'An error occured in subscribe';
   sub!: Subscription;
 
-  originalFormSetttings: ITodo = {
-    todoId: 12,
+  originalITodo: ITodo = {
+    todoId: 22,
     todoTitle: 'Hello Darkness',
     todoDueDate: Date.parse('2022-04-30'),
     todoDescription: 'My old friend....',
     todoTags: ['hello', 'music'],
   };
 
-  formSettings : ITodo = {...this.originalFormSetttings}
+  ITodo : ITodo = {...this.originalITodo}
 
   private _listFilter: string = '';
   get listFilter(): string {
@@ -93,6 +93,14 @@ export class TodoListComponent implements OnInit, OnDestroy {
       },
       error: (err) => (this.errorMessage = err),
     });
+  }
+
+  ngOnSubmit(form: NgForm) {
+    console.log('in onSubmit: ', form.valid);
+    this.todoService.postTodoForm(this.ITodo).subscribe(
+      result => console.log('success: ', result)
+      // error => console.log('error: ', error)
+    );
   }
 
   ngOnDestroy(): void {
